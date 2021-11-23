@@ -134,15 +134,15 @@ public class EnterForm {
 
 
     }
-//
-//    @AfterTest
-//    public void tearDown(){
-//        String btnLogoutXpath = "//*[@id=\"books-wrapper\"]//*[@id=\"submit\"]";
-//        goTo("profile");
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(btnLogoutXpath)));
-//        driver.findElement(By.xpath(btnLogoutXpath)).click();
-//        driver.quit();
-//    }
+
+    @AfterTest
+    public void tearDown(){
+        String btnLogoutXpath = "//*[@id=\"books-wrapper\"]//*[@id=\"submit\"]";
+        goTo("profile");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(btnLogoutXpath)));
+        driver.findElement(By.xpath(btnLogoutXpath)).click();
+        driver.quit();
+    }
 
 
     public void selectByVisibleText (String xpath, String text) throws InterruptedException {
