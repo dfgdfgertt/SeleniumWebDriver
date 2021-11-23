@@ -19,6 +19,7 @@ public class EnterFormVer2 {
 
     @Test
     public void enterForm(){
+        formPage.enterForm();
         System.out.println("The gioi cua long");
     }
 

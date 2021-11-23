@@ -1,9 +1,8 @@
 package Resource;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -11,10 +10,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class CommonPage {
 
     private static CommonPage singleton = null;
-
     private WebDriver driver = new ChromeDriver();
     private String url = "https://demoqa.com/";
     private WebDriverWait wait = new WebDriverWait(driver,30);
+    Actions key = new Actions(driver);
 
     public void goTo(String urlPath){
         driver.get(url+urlPath);
@@ -58,5 +57,24 @@ public class CommonPage {
             singleton = new CommonPage();
         }
         return singleton;
+    }
+
+    public void clickCheckBtn(String xpath){
+        WebElement ele =  driver.findElement(By.xpath(xpath));
+        JavascriptExecutor eleExe = (JavascriptExecutor) driver;
+        eleExe.executeScript("arguments[0].click()",ele);
+    }
+
+    public void pressReturn(){
+
+        key.sendKeys(String.valueOf(Keys.RETURN)).perform();
+    }
+    public void pressDown(){
+        key.sendKeys(String.valueOf(Keys.DOWN)).perform();
+    }
+
+    public void scrollDown(){
+        JavascriptExecutor js = ((JavascriptExecutor) driver);
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
     }
 }

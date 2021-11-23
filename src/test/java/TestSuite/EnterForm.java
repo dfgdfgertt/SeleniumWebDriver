@@ -111,6 +111,7 @@ public class EnterForm {
         jHobbies.executeScript("arguments[0].click()",eleHobbies);
         //enterTextById(id_image,image);
         enterTextById(id_address,address);
+        jHobbies.executeScript("window.scrollTo(0, document.body.scrollHeight)");
         clickBtnByXpath(id_state);
         Actions keyDown = new Actions(driver);
         //keyDown.sendKeys(Keys.chord(Keys.DOWN, Keys.DOWN)).perform();
