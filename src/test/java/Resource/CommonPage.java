@@ -1,21 +1,46 @@
 package Resource;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.HashMap;
 
 public class CommonPage {
 
     private static CommonPage singleton = null;
-    private WebDriver driver = new ChromeDriver();
+
+    public WebDriver driver(){
+        System.setProperty("webdriver.chrome.driver", "/driver/chromedriver");
+        String downloadFilepath = "//User//username//automation-testing//";
+        HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
+        chromePrefs.put("profile.default_content_settings.popups", 0);
+        chromePrefs.put("download.default_directory", downloadFilepath);
+        ChromeOptions options = new ChromeOptions();
+        options.setExperimentalOption("prefs", chromePrefs);
+        options.addArguments("disable-popup-blocking");
+        DesiredCapabilities cap = DesiredCapabilities.chrome();
+        cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+        cap.setCapability(ChromeOptions.CAPABILITY, options);
+        options.merge(cap);
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        return driver;
+    }
+    private WebDriver driver = driver();
+
     private String url = "https://demoqa.com/";
     private WebDriverWait wait = new WebDriverWait(driver,30);
     Actions key = new Actions(driver);
 
     public void goTo(String urlPath){
+
         driver.get(url+urlPath);
     }
 
