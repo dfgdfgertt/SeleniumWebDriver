@@ -21,9 +21,9 @@ public class FormPage {
         clickHobbies();
         enterImage();
         enterAddress();
-        selectState();
-        selectCity();
-        clickSubmit();
+//        selectState();
+//        selectCity();
+//        clickSubmit();
         //clickCloseBtn();
     }
 

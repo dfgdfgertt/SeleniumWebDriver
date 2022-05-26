@@ -40,8 +40,8 @@ public class CommonPage {
     Actions key = new Actions(driver);
 
     public void goTo(String urlPath){
-
         driver.get(url+urlPath);
+        driver.manage().window().maximize();
     }
 
     public void enterTextById(String id,String text){
