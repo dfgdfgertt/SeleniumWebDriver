@@ -27,6 +27,11 @@ public class FormPage {
         //clickCloseBtn();
     }
 
+    public String getName(){
+        System.out.println(getFirstName());
+        return getFirstName();
+    }
+
     private void goToFormPage(){
         common.goTo(data.getUrlPath());
     }
@@ -35,6 +40,9 @@ public class FormPage {
         if (data.getFirstName() != "") {
             common.enterTextById(locator.getId_firstName(), data.getFirstName());
         }
+    }
+    private String getFirstName(){
+        return  common.getText("userName-label");
     }
 
     private void enterLastName(){

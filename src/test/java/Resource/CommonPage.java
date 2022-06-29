@@ -48,6 +48,10 @@ public class CommonPage {
         findElementById(id).sendKeys(text);
     }
 
+    public String getText(String id){
+        return findElementById(id).getText();
+    }
+
     public void clickBtnById(String id){
         findElementById(id).click();
     }
